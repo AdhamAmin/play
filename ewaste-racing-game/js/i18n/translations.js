@@ -333,3 +333,6 @@ const Translations = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Translations;
 }
+
+// Expose to window for browser
+window.Translations = Translations;

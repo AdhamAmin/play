@@ -9,36 +9,50 @@ class App {
     }
 
     async init() {
-        console.log('🚀 Initializing Dr. WEEE Racing Championship...');
+        try {
+            console.log('🚀 Initializing Dr. WEEE Racing Championship...');
 
-        // Show loading screen
-        this.showLoadingScreen();
+            // Show loading screen
+            this.showLoadingScreen();
 
-        // Simulate loading assets
-        await this.loadAssets();
+            // Verify dependencies
+            if (typeof Translations === 'undefined') throw new Error('Translations not loaded');
+            if (typeof GameConfig === 'undefined') throw new Error('GameConfig not loaded');
+            if (typeof GameEngine === 'undefined') throw new Error('GameEngine not loaded');
 
-        // Initialize game systems
-        this.gameEngine = new GameEngine();
-        this.inputManager = new InputManager();
+            // Simulate loading assets
+            await this.loadAssets();
 
-        // Check if language has been selected
-        const hasSelectedLanguage = localStorage.getItem(GameConfig.storage.language);
+            // Initialize game systems
+            this.gameEngine = new GameEngine();
+            this.inputManager = new InputManager();
 
-        // Hide loading screen
-        this.hideLoadingScreen();
+            // Check if language has been selected
+            const hasSelectedLanguage = localStorage.getItem(GameConfig.storage.language);
 
-        if (!hasSelectedLanguage) {
-            // Show language selector
-            this.showLanguageSelector();
-        } else {
-            // Go directly to main menu
-            this.showMainMenu();
+            // Hide loading screen
+            this.hideLoadingScreen();
+
+            if (!hasSelectedLanguage) {
+                // Show language selector
+                this.showLanguageSelector();
+            } else {
+                // Go directly to main menu
+                this.showMainMenu();
+            }
+
+            // Setup menu event listeners
+            this.setupMenuEvents();
+
+            console.log('✅ Initialization complete!');
+        } catch (error) {
+            console.error('❌ Initialization failed:', error);
+            const loadingText = document.getElementById('loading-text');
+            if (loadingText) {
+                loadingText.textContent = `Error: ${error.message}`;
+                loadingText.style.color = '#ff3333';
+            }
         }
-
-        // Setup menu event listeners
-        this.setupMenuEvents();
-
-        console.log('✅ Initialization complete!');
     }
 
     showLoadingScreen() {

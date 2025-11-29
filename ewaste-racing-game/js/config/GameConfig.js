@@ -9,7 +9,7 @@ const GameConfig = {
         antialiasing: true,
         maxParticles: 1000
     },
-    
+
     // Camera Settings
     camera: {
         fov: 75,
@@ -20,7 +20,7 @@ const GameConfig = {
         lookAhead: 5,
         smoothing: 0.1
     },
-    
+
     // Physics Settings
     physics: {
         gravity: -9.8,
@@ -32,14 +32,14 @@ const GameConfig = {
         friction: 0.98,
         airResistance: 0.99
     },
-    
+
     // Player Settings
     player: {
         maxPlayers: 4,
         defaultCharacter: 'dr-weee',
         startingLives: 3
     },
-    
+
     // AI Settings
     ai: {
         difficulties: {
@@ -65,7 +65,7 @@ const GameConfig = {
         rubberBanding: true,
         defaultDifficulty: 'medium'
     },
-    
+
     // Race Settings
     race: {
         defaultLaps: 3,
@@ -73,7 +73,7 @@ const GameConfig = {
         respawnDelay: 2,
         countdownDuration: 3
     },
-    
+
     // Power-Up Settings
     powerups: {
         spawnInterval: 10,
@@ -87,7 +87,7 @@ const GameConfig = {
             { id: 'battery-surge', rarity: 'rare' }
         ]
     },
-    
+
     // Scoring
     scoring: {
         firstPlace: 100,
@@ -98,14 +98,14 @@ const GameConfig = {
         lapBonus: 20,
         perfectLap: 50
     },
-    
+
     // Mission Settings
     missions: {
         totalMissions: 10,
         levelsPerMission: 5,
         starsToUnlock: [0, 5, 15, 30, 50, 75, 100, 130, 165, 200]
     },
-    
+
     // Controls
     controls: {
         player1: {
@@ -143,7 +143,7 @@ const GameConfig = {
         pause: 'Escape',
         changeCamera: 'KeyC'
     },
-    
+
     // Audio Settings
     audio: {
         masterVolume: 0.7,
@@ -151,7 +151,7 @@ const GameConfig = {
         sfxVolume: 0.8,
         engineVolume: 0.6
     },
-    
+
     // Visual Effects
     effects: {
         bloomStrength: 1.5,
@@ -160,7 +160,7 @@ const GameConfig = {
         trailLength: 20,
         particleLifetime: 2
     },
-    
+
     // Storage Keys
     storage: {
         language: 'drweee_language',
@@ -169,7 +169,7 @@ const GameConfig = {
         leaderboard: 'drweee_leaderboard',
         customization: 'drweee_customization'
     },
-    
+
     // Colors (Dr. WEEE Brand)
     colors: {
         primary: 0x00ff00,
@@ -179,7 +179,7 @@ const GameConfig = {
         warning: 0xff0055,
         dark: 0x0a0a0a,
         light: 0xffffff,
-        
+
         // Character Colors
         drWeee: 0x00ff00,
         captainCircuit: 0x00d4ff,
@@ -192,3 +192,6 @@ const GameConfig = {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = GameConfig;
 }
+
+// Expose to window for browser
+window.GameConfig = GameConfig;
